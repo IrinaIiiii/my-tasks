@@ -32,9 +32,10 @@ public class University {
         public int hashCode() {
             return Objects.hash(faculty, year);
         }
-        
-        
+
+
     }
+
     private Map<Pair, List<Student>> map = new HashMap<>();
 
     public void addStudent(Student student) {
@@ -43,8 +44,8 @@ public class University {
         if (map.containsKey(pair)) {
             List<Student> list = map.get(pair);
             list.add(student);
-            map.put(pair,list);
-        } else  {
+            map.put(pair, list);
+        } else {
             List<Student> list = new ArrayList<>();
             list.add(student);
             map.put(pair, list);
@@ -52,7 +53,7 @@ public class University {
         }
 
     }
-    
+
     public void deleteStudent(String name, int year, String faculty) {
         Pair pair = new Pair(faculty, year);
         if (map.containsKey(pair)) {
@@ -60,20 +61,22 @@ public class University {
             Iterator<Student> iterator = list.iterator();
             while (iterator.hasNext()) {
                 if (iterator.next().getName().equals(name)) {
-                    System.out.println("Удаляем студента с именем:"+iterator.next().getName());
+                    System.out.println("Удаляем студента с именем:" + iterator.next().getName());
                     iterator.remove();
                 }
             }
-            
+
         }
     }
+
     public void printListStudent(int year, String faculty) {
-        Pair pair = new Pair(faculty,year);
+        Pair pair = new Pair(faculty, year);
         if (map.containsKey(pair)) {
             List<Student> list = map.get(pair);
-            System.out.println(pair.getFaculty()+pair.getYear());
-            for (int i = 0; i <list.size() ; i++) {
+            System.out.println(pair.getFaculty() + pair.getYear());
+            for (int i = 0; i < list.size(); i++) {
                 System.out.println(list.get(i).getName());
             }
+        }
     }
 }
